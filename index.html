@@ -3,8 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to AR Rahman Tribute</title>
+    <title>Welcome to A.R. Rahman Tribute</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
         body {
             margin: 0;
             padding: 0;
@@ -12,51 +18,160 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background: #000;
-            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
         }
+        
         .splash-container {
             text-align: center;
             color: white;
+            z-index: 10;
+            position: relative;
         }
+        
         .splash-title {
-            font-size: 3em;
+            font-size: 4.5em;
             margin-bottom: 20px;
             opacity: 0;
-            animation: fadeIn 2s forwards;
+            animation: fadeInUp 2s forwards;
+            background: linear-gradient(135deg, #d4af37 0%, #ffd700 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            font-weight: bold;
         }
+        
         .splash-subtitle {
-            font-size: 1.5em;
-            margin-bottom: 30px;
+            font-size: 1.8em;
+            margin-bottom: 15px;
             opacity: 0;
-            animation: fadeIn 2s forwards 1s;
+            animation: fadeInUp 2s forwards 0.8s;
+            color: #d4af37;
         }
+        
+        .splash-tagline {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeInUp 2s forwards 1.5s;
+            color: rgba(255, 255, 255, 0.8);
+        }
+        
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .enter-button {
-            padding: 15px 30px;
-            font-size: 1.2em;
-            background: transparent;
-            color: white;
-            border: 2px solid white;
-            cursor: pointer;
-            transition: all 0.3s;
-            opacity: 0;
-            animation: fadeIn 2s forwards 2s;
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
+        
+        .enter-button {
+            padding: 18px 45px;
+            font-size: 1.3em;
+            background: transparent;
+            color: #d4af37;
+            border: 3px solid #d4af37;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 2s forwards 2.2s;
+            border-radius: 50px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .enter-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: #d4af37;
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+        
         .enter-button:hover {
-            background: white;
-            color: black;
+            color: #1a1a2e;
+            border-color: #ffd700;
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+        }
+        
+        .enter-button:hover::before {
+            left: 0;
+        }
+        
+        /* Animated background elements */
+        .music-note {
+            position: absolute;
+            color: rgba(212, 175, 55, 0.1);
+            font-size: 3em;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .note1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .note2 { top: 20%; right: 15%; animation-delay: 1s; }
+        .note3 { bottom: 15%; left: 20%; animation-delay: 2s; }
+        .note4 { bottom: 25%; right: 10%; animation-delay: 3s; }
+        .note5 { top: 50%; left: 5%; animation-delay: 4s; }
+        .note6 { top: 60%; right: 5%; animation-delay: 5s; }
+        
+        @keyframes float {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.1;
+            }
+            50% { 
+                transform: translateY(-30px) rotate(180deg);
+                opacity: 0.3;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .splash-title {
+                font-size: 2.5em;
+            }
+            .splash-subtitle {
+                font-size: 1.3em;
+            }
+            .splash-tagline {
+                font-size: 1em;
+            }
+            .enter-button {
+                padding: 15px 35px;
+                font-size: 1.1em;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="music-note note1">♪</div>
+    <div class="music-note note2">♫</div>
+    <div class="music-note note3">♪</div>
+    <div class="music-note note4">♫</div>
+    <div class="music-note note5">♪</div>
+    <div class="music-note note6">♫</div>
+    
     <div class="splash-container">
         <h1 class="splash-title">A.R. Rahman</h1>
-        <p class="splash-subtitle">The Golden Musician</p>
-        <button class="enter-button" onclick="window.location.href='HTML/tribute.html'">Enter Site</button>
+        <p class="splash-subtitle">The Mozart of Madras</p>
+        <p class="splash-tagline">Two-Time Academy Award Winner • Grammy Award Winner</p>
+        <button class="enter-button" onclick="window.location.href='HTML/tribute.html'">Enter Tribute</button>
     </div>
 </body>
 </html>
